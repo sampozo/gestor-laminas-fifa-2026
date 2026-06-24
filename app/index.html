@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FIFA World Cup 2026 - Sticker Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Safe area notch spacing for modern mobile screens */
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+
+      /* Premium Color Palette (FIFA 2026 inspired) */
+      --bg-dark: #090215;
+      --bg-card: rgba(26, 11, 46, 0.55);
+      --border-color: rgba(255, 255, 255, 0.12);
+      
+      --color-gold: #ffc837;
+      --color-gold-glow: rgba(255, 200, 55, 0.4);
+      --color-magenta: #e0007a;
+      --color-cyan: #00f2fe;
+      --color-success: #10b981;
+      
+      --gradient-bg: radial-gradient(circle at 50% 0%, #31005a 0%, #0d021f 70%);
+      --gradient-accent: linear-gradient(135deg, #e0007a 0%, #7600d8 100%);
+      --gradient-cyan: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      --gradient-gold: linear-gradient(135deg, #ffc837 0%, #ff8008 100%);
+      
+      --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      --blur-strength: 20px;
+    }
+
+    /* Base reset & styling */
+    * { box-sizing: border-box; outline: none; }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0c0817;
+      font-family: 'Outfit', sans-serif;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Simulator wrapper on desktop, full-screen on mobile */
+    #app-container {
+      width: 100%;
+      height: 100vh;
+      background: var(--gradient-bg);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding-top: var(--safe-top);
+      padding-bottom: var(--safe-bottom);
+      padding-left: var(--safe-left);
+      padding-right: var(--safe-right);
+      transition: all 0.3s ease;
+    }
+
+    @media (min-width: 480px) {
+      body {
+        background-color: #07030e;
+        background-image: radial-gradient(circle at 10% 10%, #15082e 0%, transparent 40%),
+                          radial-gradient(circle at 90% 90%, #2e0828 0%, transparent 40%);
+      }
+      #app-container {
+        width: 380px;
+        height: 720px;
+        border-radius: 40px;
+        border: 8px solid #1a1525;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05);
+      }
+    }
+
+    /* Screen view structures */
+    .screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 24px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .hidden {
+      display: none !important;
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    /* Header styling */
+    .header-logo {
+      margin-top: 10px;
+      position: relative;
+    }
+    .logo-badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--color-cyan);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: inline-block;
+      backdrop-filter: blur(5px);
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: 900;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 30%, #e1ccff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+    h1 span {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+    }
+    h2 {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 5px 0 0 0;
+    }
+
+    /* Decorative main screen card */
+    .center-card {
+      width: 100%;
+      max-width: 290px;
+      background: var(--bg-card);
+      backdrop-filter: blur(var(--blur-strength));
+      -webkit-backdrop-filter: blur(var(--blur-strength));
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 30px 20px;
+      box-shadow: var(--shadow-premium);
+      margin: 25px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .center-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 16px;
+      border: none;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:active {
+      transform: scale(0.96);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .btn-primary {
+      background: var(--gradient-accent);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      border: 1px solid var(--border-color);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .btn-gold {
+      background: var(--gradient-gold);
+      color: #0b021d;
+      font-weight: 900;
+    }
+    .btn-success {
+      background: var(--color-success);
+      color: white;
+    }
+    .btn-danger {
+      background: var(--color-magenta);
+      color: white;
+    }
+
+    /* Input panel */
+    .input-wrapper {
+      width: 100%;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .input-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--color-cyan);
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-align: left;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 16px;
+      font-size: 20px;
+      text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 2px;
+      transition: all 0.25s ease;
+    }
+    input[type="text"]:focus {
+      border-color: var(--color-cyan);
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+
+    /* Settings Button & Layout */
+    .btn-settings-corner {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .btn-settings-corner:active {
+      transform: scale(0.9);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Modals & Overlays */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 2, 11, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 24px;
+      box-sizing: border-box;
+      animation: fadeIn 0.2s ease-out;
+    }
+    
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 310px;
+      padding: 28px 24px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: var(--shadow-premium);
+      animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Status Visuals */
+    .status-badge {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .badge-yes { background: rgba(16, 185, 129, 0.15); color: var(--color-success); border: 1px solid var(--color-success); }
+    .badge-no { background: rgba(255, 200, 55, 0.15); color: var(--color-gold); border: 1px solid var(--color-gold); }
+    .badge-error { background: rgba(224, 0, 122, 0.15); color: var(--color-magenta); border: 1px solid var(--color-magenta); }
+
+    .sticker-details {
+      margin-bottom: 25px;
+    }
+    .sticker-code {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin: 5px 0;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 40%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sticker-country {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    /* Soccer Ball Loader */
+    .soccer-ball {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #d5d5d5 40%, #858585 100%);
+      box-shadow: inset -6px -6px 12px rgba(0,0,0,0.4), 0 10px 20px rgba(0,0,0,0.4);
+      animation: spin 1.2s infinite linear;
+    }
+    .soccer-ball::before {
+      content: '';
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        radial-gradient(circle at 50% 50%, #15022b 16%, transparent 18%),
+        radial-gradient(circle at 80% 25%, #15022b 14%, transparent 16%),
+        radial-gradient(circle at 20% 75%, #15022b 14%, transparent 16%),
+        radial-gradient(circle at 75% 75%, #15022b 12%, transparent 14%),
+        radial-gradient(circle at 25% 25%, #15022b 12%, transparent 14%);
+      opacity: 0.85;
+    }
+
+    /* Footer styling */
+    .footer {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 1.5px;
+      margin-top: 15px;
+    }
+
+    /* Animation frames */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes scaleUp {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Connection Test Output classes */
+    .connection-status {
+      font-size: 12px;
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      text-align: left;
+      font-family: monospace;
+      max-height: 80px;
+      overflow-y: auto;
+    }
+    .conn-success { background: rgba(16, 185, 129, 0.1); color: var(--color-success); border: 1px solid rgba(16, 185, 129, 0.2); }
+    .conn-error { background: rgba(224, 0, 122, 0.1); color: var(--color-magenta); border: 1px solid rgba(224, 0, 122, 0.2); }
+  </style>
+</head>
+<body>
+
+  <div id="app-container">
+    
+    <!-- Home Screen -->
+    <div id="screen-home" class="screen">
+      <div class="btn-settings-corner" onclick="navegar('screen-settings')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </div>
+
+      <div class="header-logo">
+        <div class="logo-badge">FIFA World Cup</div>
+        <h1>FIFA WORLD CUP<span>2026</span></h1>
+        <h2>Gestor de Láminas</h2>
+      </div>
+
+      <div class="center-card">
+        <div class="soccer-ball" style="animation: spin 5s infinite linear;"></div>
+        <p style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.7); margin: 0 0 10px 0;">
+          Lleva el control de tus láminas y actualiza tu álbum en tiempo real con Google Sheets.
+        </p>
+      </div>
+
+      <div style="width: 100%; gap: 10px; display: flex; flex-direction: column;">
+        <button class="btn btn-gold" onclick="navegar('screen-search')">INICIAR BÚSQUEDA</button>
+        <button class="btn btn-secondary" onclick="navegar('screen-settings')">AJUSTES BACKEND</button>
+        <div class="footer">EDICIÓN MUNDIAL 2026</div>
+      </div>
+    </div>
+
+    <!-- Search Screen -->
+    <div id="screen-search" class="screen hidden">
+      <div class="btn-settings-corner" onclick="navegar('screen-home')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </div>
+
+      <div class="header-logo">
+        <div class="logo-badge">Álbum Digital</div>
+        <h1 style="font-size: 26px;">BUSCAR LÁMINA</h1>
+      </div>
+
+      <div class="center-card">
+        <div class="input-wrapper">
+          <div class="input-label">Código de Lámina</div>
+          <input type="text" id="codigoInput" placeholder="EJ: ARG10" autocomplete="off" autofocus>
+        </div>
+        <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin: 0;">
+          Ingresa el código del país y número (ej: USA 5, ARG10, JPN 1)
+        </p>
+      </div>
+
+      <div style="width: 100%; gap: 10px; display: flex; flex-direction: column;">
+        <button class="btn btn-primary" onclick="iniciarBusqueda()">BUSCAR</button>
+        <button class="btn btn-secondary" onclick="navegar('screen-home')">VOLVER</button>
+        <div class="footer">CONEXIÓN CLOUD SEGURA</div>
+      </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div id="screen-settings" class="screen hidden">
+      <div class="header-logo">
+        <div class="logo-badge">Configuración</div>
+        <h1 style="font-size: 26px;">CONEXIÓN API</h1>
+      </div>
+
+      <div class="center-card" style="padding: 20px 15px; margin: 15px 0;">
+        <div class="input-wrapper" style="margin-bottom: 12px;">
+          <div class="input-label">URL del Web App (Apps Script)</div>
+          <input type="text" id="backendUrlInput" placeholder="https://script.google.com/..." style="font-size: 12px; text-align: left; letter-spacing: 0; padding: 12px;" autocomplete="off">
+        </div>
+        <button class="btn btn-secondary" onclick="testearConexion()" style="padding: 10px 15px; font-size: 11px; margin-bottom: 10px;">Testear Conexión</button>
+        <div id="testOutput" class="connection-status hidden"></div>
+      </div>
+
+      <div style="width: 100%; gap: 10px; display: flex; flex-direction: column;">
+        <button class="btn btn-gold" onclick="guardarAjustes()">GUARDAR AJUSTES</button>
+        <button class="btn btn-secondary" onclick="navegar('screen-home')">CANCELAR</button>
+        <div class="footer">REQUERIDO PARA MODO MÓVIL</div>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="overlay-loader" class="overlay hidden">
+      <div class="modal-card">
+        <div class="soccer-ball"></div>
+        <div style="color: white; font-weight: 800; font-size: 18px; letter-spacing: 1px;">BUSCANDO EN CLOUD...</div>
+        <div style="color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 5px;">Conectando con Google Sheets</div>
+      </div>
+    </div>
+
+    <!-- Popup: Ya la tienes (YES) -->
+    <div id="popup-yes" class="overlay hidden">
+      <div class="modal-card">
+        <span class="status-badge badge-yes">Repetida</span>
+        <div class="sticker-details">
+          <div class="sticker-country" id="yes-pais">ARGENTINA</div>
+          <div class="sticker-code" id="yes-codigo">ARG 10</div>
+        </div>
+        <div style="color: var(--color-success); font-weight: 800; margin-bottom: 25px; font-size: 16px;">
+          ✓ YA LA TIENES EN TU ÁLBUM
+        </div>
+        <button class="btn btn-gold" onclick="reiniciarBusqueda()" style="margin-bottom: 10px;">BUSCAR OTRA</button>
+        <button class="btn btn-secondary" onclick="navegar('screen-home')">INICIO</button>
+      </div>
+    </div>
+
+    <!-- Popup: No la tienes (NO) -->
+    <div id="popup-no" class="overlay hidden">
+      <div class="modal-card">
+        <span class="status-badge badge-no">Nueva</span>
+        <div class="sticker-details">
+          <div class="sticker-country" id="no-pais">BRASIL</div>
+          <div class="sticker-code" id="no-codigo">BRA 10</div>
+        </div>
+        <div style="color: var(--color-gold); font-weight: 800; margin-bottom: 25px; font-size: 16px;">
+          ★ NO LA TIENES TODAVÍA
+        </div>
+        <button class="btn btn-success" onclick="agregarLaminaAlAlbum()" style="margin-bottom: 10px;">AGREGAR AL ÁLBUM</button>
+        <button class="btn btn-secondary" onclick="reiniciarBusqueda()">BUSCAR OTRA</button>
+      </div>
+    </div>
+
+    <!-- Popup: Error o No Válido -->
+    <div id="popup-error" class="overlay hidden">
+      <div class="modal-card">
+        <span class="status-badge badge-error">Error</span>
+        <div style="font-size: 20px; font-weight: 900; color: white; margin-bottom: 10px;">CÓDIGO NO VÁLIDO</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.5; margin-bottom: 25px;" id="error-message">
+          El código no existe en el registro del Mundial 2026. Verifica la escritura e intenta de nuevo.
+        </div>
+        <button class="btn btn-danger" onclick="reiniciarBusqueda()">INTENTAR DE NUEVO</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let codigoActual = '';
+    let backendUrl = localStorage.getItem('fifa_backend_url') || '';
+
+    // Load initial configuration
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('backendUrlInput').value = backendUrl;
+      
+      // Setup keyboard enter triggers
+      document.getElementById('codigoInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          iniciarBusqueda();
+        }
+      });
+    });
+
+    // Navigation function with visual transitions
+    function navegar(screenId) {
+      // Apply haptic touch if supported
+      hapticTouch(10);
+      
+      document.querySelectorAll('.screen').forEach(el => {
+        el.classList.add('hidden');
+      });
+      document.getElementById(screenId).classList.remove('hidden');
+      
+      if (screenId === 'screen-search') {
+        setTimeout(() => {
+          document.getElementById('codigoInput').focus();
+        }, 150);
+      }
+    }
+
+    // Hide all overlays
+    function ocultarOverlays() {
+      document.querySelectorAll('.overlay').forEach(el => el.classList.add('hidden'));
+    }
+
+    // Reset search state
+    function reiniciarBusqueda() {
+      hapticTouch(5);
+      ocultarOverlays();
+      document.getElementById('codigoInput').value = '';
+      setTimeout(() => {
+        document.getElementById('codigoInput').focus();
+      }, 100);
+    }
+
+    // Trigger phone vibration (haptics)
+    function hapticTouch(ms) {
+      if (navigator.vibrate) {
+        navigator.vibrate(ms);
+      }
+    }
+
+    // Save URL Settings
+    function guardarAjustes() {
+      const url = document.getElementById('backendUrlInput').value.trim();
+      localStorage.setItem('fifa_backend_url', url);
+      backendUrl = url;
+      hapticTouch(30);
+      alert('Ajustes guardados correctamente.');
+      navegar('screen-home');
+    }
+
+    // Connection testing routine
+    function testearConexion() {
+      const url = document.getElementById('backendUrlInput').value.trim();
+      const output = document.getElementById('testOutput');
+      output.classList.remove('hidden');
+      output.className = 'connection-status';
+      output.innerText = 'Conectando con el servidor de Google...';
+
+      if (!url) {
+        output.className = 'connection-status conn-error';
+        output.innerText = 'Error: Por favor introduce una URL.';
+        return;
+      }
+
+      fetch(`${url}?action=buscar&codigo=USA1`)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.json();
+        })
+        .then(data => {
+          output.className = 'connection-status conn-success';
+          output.innerText = '¡Conexión Exitosa! El servidor de Google Sheets respondió correctamente.';
+          hapticTouch([40, 20, 40]);
+        })
+        .catch(err => {
+          output.className = 'connection-status conn-error';
+          output.innerText = `Error de Conexión: ${err.message}\nVerifica la URL y que esté desplegada como Pública (Anyone).`;
+          hapticTouch([80, 80]);
+        });
+    }
+
+    // Main search logic
+    function iniciarBusqueda() {
+      codigoActual = document.getElementById('codigoInput').value.trim();
+      if (!codigoActual) return;
+
+      hapticTouch(15);
+      document.getElementById('overlay-loader').classList.remove('hidden');
+
+      // If running bound inside Google Apps Script (fallback simulator test)
+      if (typeof google !== 'undefined' && google.script && google.script.run && !backendUrl) {
+        google.script.run
+          .withSuccessHandler(res => {
+            document.getElementById('overlay-loader').classList.add('hidden');
+            mostrarResultado(res);
+          })
+          .withFailureHandler(err => {
+            document.getElementById('overlay-loader').classList.add('hidden');
+            mostrarError(err.message);
+          })
+          .buscarLaminaGS(codigoActual);
+        return;
+      }
+
+      // Standard remote API fetch
+      if (!backendUrl) {
+        document.getElementById('overlay-loader').classList.add('hidden');
+        mostrarError("Por favor configura la URL del Web App de Google en Ajustes.");
+        return;
+      }
+
+      fetch(`${backendUrl}?action=buscar&codigo=${encodeURIComponent(codigoActual)}`)
+        .then(response => {
+          if (!response.ok) throw new Error(`Error de servidor (${response.status})`);
+          return response.json();
+        })
+        .then(res => {
+          document.getElementById('overlay-loader').classList.add('hidden');
+          mostrarResultado(res);
+        })
+        .catch(err => {
+          document.getElementById('overlay-loader').classList.add('hidden');
+          mostrarError(`Error de red: ${err.message}. Asegúrate de que el backend de Google Sheets esté configurado.`);
+        });
+    }
+
+    // Result Router
+    function mostrarResultado(res) {
+      ocultarOverlays();
+      if (res && res.encontrada) {
+        if (res.la_tengo === 1) {
+          document.getElementById('yes-pais').innerText = res.pais;
+          document.getElementById('yes-codigo').innerText = res.lamina_id;
+          document.getElementById('popup-yes').classList.remove('hidden');
+          hapticTouch([30, 30]); // Double tap haptic for "already have"
+        } else {
+          document.getElementById('no-pais').innerText = res.pais;
+          document.getElementById('no-codigo').innerText = res.lamina_id;
+          document.getElementById('popup-no').classList.remove('hidden');
+          hapticTouch([50, 10, 50, 10, 50]); // Success vibration sequence
+        }
+      } else {
+        mostrarError("El código ingresado no corresponde a ninguna lámina válida. Por favor, verifica el formato (ej. ARG10, USA3).");
+      }
+    }
+
+    // Error Popup Trigger
+    function mostrarError(msg) {
+      ocultarOverlays();
+      document.getElementById('error-message').innerText = msg;
+      document.getElementById('popup-error').classList.remove('hidden');
+      hapticTouch([100, 50, 100]); // Danger warning vibration
+    }
+
+    // Register sticker to sheets
+    function agregarLaminaAlAlbum() {
+      document.getElementById('overlay-loader').classList.remove('hidden');
+      hapticTouch(20);
+
+      // If running inside Google Sheets bound
+      if (typeof google !== 'undefined' && google.script && google.script.run && !backendUrl) {
+        google.script.run
+          .withSuccessHandler(res => {
+            document.getElementById('overlay-loader').classList.add('hidden');
+            ocultarOverlays();
+            // Show repeated screen (since it's added successfully)
+            document.getElementById('yes-pais').innerText = document.getElementById('no-pais').innerText;
+            document.getElementById('yes-codigo').innerText = document.getElementById('no-codigo').innerText;
+            document.getElementById('popup-yes').classList.remove('hidden');
+            hapticTouch([40, 40]);
+          })
+          .agregarLaminaGS(codigoActual);
+        return;
+      }
+
+      fetch(`${backendUrl}?action=agregar&codigo=${encodeURIComponent(codigoActual)}`)
+        .then(response => {
+          if (!response.ok) throw new Error("Error en servidor");
+          return response.json();
+        })
+        .then(res => {
+          document.getElementById('overlay-loader').classList.add('hidden');
+          if (res.success) {
+            ocultarOverlays();
+            document.getElementById('yes-pais').innerText = document.getElementById('no-pais').innerText;
+            document.getElementById('yes-codigo').innerText = document.getElementById('no-codigo').innerText;
+            document.getElementById('popup-yes').classList.remove('hidden');
+            hapticTouch([30, 20, 30]);
+          } else {
+            mostrarError(res.error || "No se pudo agregar la lámina.");
+          }
+        })
+        .catch(err => {
+          document.getElementById('overlay-loader').classList.add('hidden');
+          mostrarError("Error al registrar la lámina: " + err.message);
+        });
+    }
+  </script>
+</body>
+</html>

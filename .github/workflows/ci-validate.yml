@@ -1,0 +1,28 @@
+name: Pre-commit Validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint and validate
+        run: |
+          if grep -r "ghp_\|github_pat_" --include="*.html" --include="*.js" --include="*.ts" .; then
+            echo "ERROR: Secrets detected in source files"
+            exit 1
+          fi
+
+          if ! grep -q "github.txt" .gitignore; then
+            echo "WARNING: github.txt not in .gitignore"
+          fi
+          if ! grep -q "design.html" .gitignore; then
+            echo "WARNING: design.html not in .gitignore"
+          fi
