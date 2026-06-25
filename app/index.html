@@ -442,7 +442,7 @@
           ✓ YA LA TIENES EN TU ÁLBUM
         </div>
         <button class="btn btn-gold" onclick="reiniciarBusqueda()" style="margin-bottom: 10px;">BUSCAR OTRA</button>
-        <button class="btn btn-secondary" onclick="navegar('screen-home')">INICIO</button>
+        <button class="btn btn-secondary" onclick="ocultarOverlays(); navegar('screen-home')">SALIR</button>
       </div>
     </div>
 
@@ -458,7 +458,8 @@
           ★ NO LA TIENES TODAVÍA
         </div>
         <button class="btn btn-success" onclick="agregarLaminaAlAlbum()" style="margin-bottom: 10px;">AGREGAR AL ÁLBUM</button>
-        <button class="btn btn-secondary" onclick="reiniciarBusqueda()">BUSCAR OTRA</button>
+        <button class="btn btn-gold" onclick="reiniciarBusqueda()" style="margin-bottom: 10px;">BUSCAR OTRA</button>
+        <button class="btn btn-secondary" onclick="ocultarOverlays(); navegar('screen-home')">SALIR</button>
       </div>
     </div>
 
@@ -470,7 +471,8 @@
         <div style="color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.5; margin-bottom: 25px;" id="error-message">
           El código no existe en el registro del Mundial 2026. Verifica la escritura e intenta de nuevo.
         </div>
-        <button class="btn btn-danger" onclick="reiniciarBusqueda()">INTENTAR DE NUEVO</button>
+        <button class="btn btn-danger" onclick="reiniciarBusqueda()" style="margin-bottom: 10px;">INTENTAR DE NUEVO</button>
+        <button class="btn btn-secondary" onclick="ocultarOverlays(); navegar('screen-home')">SALIR</button>
       </div>
     </div>
 
