@@ -54,7 +54,12 @@ function getSheet() {
   if (!sheetId) {
     throw new Error('SPREADSHEET_ID no configurado. Ejecuta setupSpreadsheetId() primero.');
   }
-  return SpreadsheetApp.openById(sheetId).getSheetByName("LAMINA");
+  const ss = SpreadsheetApp.openById(sheetId);
+  let sheet = ss.getSheetByName("LAMINA");
+  if (!sheet) {
+    sheet = ss.getSheets()[0];
+  }
+  return sheet;
 }
 
 /**
