@@ -254,27 +254,6 @@
       box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
     }
 
-    /* Settings Button & Layout */
-    .btn-settings-corner {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: background 0.2s;
-    }
-    .btn-settings-corner:active {
-      transform: scale(0.9);
-      background: rgba(255, 255, 255, 0.15);
-    }
 
     /* Modals & Overlays */
     .overlay {
@@ -388,19 +367,7 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    /* Connection Test Output classes */
-    .connection-status {
-      font-size: 12px;
-      margin-top: 10px;
-      padding: 8px;
-      border-radius: 8px;
-      text-align: left;
-      font-family: monospace;
-      max-height: 80px;
-      overflow-y: auto;
-    }
-    .conn-success { background: rgba(16, 185, 129, 0.1); color: var(--color-success); border: 1px solid rgba(16, 185, 129, 0.2); }
-    .conn-error { background: rgba(224, 0, 122, 0.1); color: var(--color-magenta); border: 1px solid rgba(224, 0, 122, 0.2); }
+
   </style>
 </head>
 <body>
@@ -409,13 +376,6 @@
     
     <!-- Home Screen -->
     <div id="screen-home" class="screen">
-      <div class="btn-settings-corner" onclick="navegar('screen-settings')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-        </svg>
-      </div>
-
       <div class="header-logo">
         <div class="logo-badge">FIFA World Cup</div>
         <h1>FIFA WORLD CUP<span>2026</span></h1>
@@ -431,20 +391,12 @@
 
       <div style="width: 100%; gap: 10px; display: flex; flex-direction: column;">
         <button class="btn btn-gold" onclick="navegar('screen-search')">INICIAR BÚSQUEDA</button>
-        <button class="btn btn-secondary" onclick="navegar('screen-settings')">AJUSTES BACKEND</button>
         <div class="footer">EDICIÓN MUNDIAL 2026</div>
       </div>
     </div>
 
     <!-- Search Screen -->
     <div id="screen-search" class="screen hidden">
-      <div class="btn-settings-corner" onclick="navegar('screen-home')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </div>
-
       <div class="header-logo">
         <div class="logo-badge">Álbum Digital</div>
         <h1 style="font-size: 26px;">BUSCAR LÁMINA</h1>
@@ -467,28 +419,7 @@
       </div>
     </div>
 
-    <!-- Settings Screen -->
-    <div id="screen-settings" class="screen hidden">
-      <div class="header-logo">
-        <div class="logo-badge">Configuración</div>
-        <h1 style="font-size: 26px;">CONEXIÓN API</h1>
-      </div>
 
-      <div class="center-card" style="padding: 20px 15px; margin: 15px 0;">
-        <div class="input-wrapper" style="margin-bottom: 12px;">
-          <div class="input-label">URL del Web App (Apps Script)</div>
-          <input type="text" id="backendUrlInput" placeholder="https://script.google.com/..." style="font-size: 12px; text-align: left; letter-spacing: 0; padding: 12px;" autocomplete="off">
-        </div>
-        <button class="btn btn-secondary" onclick="testearConexion()" style="padding: 10px 15px; font-size: 11px; margin-bottom: 10px;">Testear Conexión</button>
-        <div id="testOutput" class="connection-status hidden"></div>
-      </div>
-
-      <div style="width: 100%; gap: 10px; display: flex; flex-direction: column;">
-        <button class="btn btn-gold" onclick="guardarAjustes()">GUARDAR AJUSTES</button>
-        <button class="btn btn-secondary" onclick="navegar('screen-home')">CANCELAR</button>
-        <div class="footer">REQUERIDO PARA MODO MÓVIL</div>
-      </div>
-    </div>
 
     <!-- Loading Overlay -->
     <div id="overlay-loader" class="overlay hidden">
@@ -546,14 +477,17 @@
   </div>
 
   <script>
-    let codigoActual = '';
-    let backendUrl = localStorage.getItem('fifa_backend_url') || '';
+    // ============================================================
+    // CONFIGURACIÓN DEL BACKEND (editar antes de compilar la APK)
+    // URL del Web App desplegado en Google Apps Script.
+    // El ID de la hoja está guardado en Script Properties del proyecto.
+    // ============================================================
+    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbz_PLACEHOLDER_REEMPLAZAR_CON_URL_REAL/exec';
 
-    // Load initial configuration
+    let codigoActual = '';
+
+    // Setup keyboard enter triggers
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('backendUrlInput').value = backendUrl;
-      
-      // Setup keyboard enter triggers
       document.getElementById('codigoInput').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
           iniciarBusqueda();
@@ -563,14 +497,11 @@
 
     // Navigation function with visual transitions
     function navegar(screenId) {
-      // Apply haptic touch if supported
       hapticTouch(10);
-      
       document.querySelectorAll('.screen').forEach(el => {
         el.classList.add('hidden');
       });
       document.getElementById(screenId).classList.remove('hidden');
-      
       if (screenId === 'screen-search') {
         setTimeout(() => {
           document.getElementById('codigoInput').focus();
@@ -600,47 +531,6 @@
       }
     }
 
-    // Save URL Settings
-    function guardarAjustes() {
-      const url = document.getElementById('backendUrlInput').value.trim();
-      localStorage.setItem('fifa_backend_url', url);
-      backendUrl = url;
-      hapticTouch(30);
-      alert('Ajustes guardados correctamente.');
-      navegar('screen-home');
-    }
-
-    // Connection testing routine
-    function testearConexion() {
-      const url = document.getElementById('backendUrlInput').value.trim();
-      const output = document.getElementById('testOutput');
-      output.classList.remove('hidden');
-      output.className = 'connection-status';
-      output.innerText = 'Conectando con el servidor de Google...';
-
-      if (!url) {
-        output.className = 'connection-status conn-error';
-        output.innerText = 'Error: Por favor introduce una URL.';
-        return;
-      }
-
-      fetch(`${url}?action=buscar&codigo=USA1`)
-        .then(response => {
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          return response.json();
-        })
-        .then(data => {
-          output.className = 'connection-status conn-success';
-          output.innerText = '¡Conexión Exitosa! El servidor de Google Sheets respondió correctamente.';
-          hapticTouch([40, 20, 40]);
-        })
-        .catch(err => {
-          output.className = 'connection-status conn-error';
-          output.innerText = `Error de Conexión: ${err.message}\nVerifica la URL y que esté desplegada como Pública (Anyone).`;
-          hapticTouch([80, 80]);
-        });
-    }
-
     // Main search logic
     function iniciarBusqueda() {
       codigoActual = document.getElementById('codigoInput').value.trim();
@@ -649,29 +539,7 @@
       hapticTouch(15);
       document.getElementById('overlay-loader').classList.remove('hidden');
 
-      // If running bound inside Google Apps Script (fallback simulator test)
-      if (typeof google !== 'undefined' && google.script && google.script.run && !backendUrl) {
-        google.script.run
-          .withSuccessHandler(res => {
-            document.getElementById('overlay-loader').classList.add('hidden');
-            mostrarResultado(res);
-          })
-          .withFailureHandler(err => {
-            document.getElementById('overlay-loader').classList.add('hidden');
-            mostrarError(err.message);
-          })
-          .buscarLaminaGS(codigoActual);
-        return;
-      }
-
-      // Standard remote API fetch
-      if (!backendUrl) {
-        document.getElementById('overlay-loader').classList.add('hidden');
-        mostrarError("Por favor configura la URL del Web App de Google en Ajustes.");
-        return;
-      }
-
-      fetch(`${backendUrl}?action=buscar&codigo=${encodeURIComponent(codigoActual)}`)
+      fetch(`${BACKEND_URL}?action=buscar&codigo=${encodeURIComponent(codigoActual)}`)
         .then(response => {
           if (!response.ok) throw new Error(`Error de servidor (${response.status})`);
           return response.json();
@@ -682,7 +550,7 @@
         })
         .catch(err => {
           document.getElementById('overlay-loader').classList.add('hidden');
-          mostrarError(`Error de red: ${err.message}. Asegúrate de que el backend de Google Sheets esté configurado.`);
+          mostrarError(`Error de red: ${err.message}`);
         });
     }
 
@@ -719,23 +587,7 @@
       document.getElementById('overlay-loader').classList.remove('hidden');
       hapticTouch(20);
 
-      // If running inside Google Sheets bound
-      if (typeof google !== 'undefined' && google.script && google.script.run && !backendUrl) {
-        google.script.run
-          .withSuccessHandler(res => {
-            document.getElementById('overlay-loader').classList.add('hidden');
-            ocultarOverlays();
-            // Show repeated screen (since it's added successfully)
-            document.getElementById('yes-pais').innerText = document.getElementById('no-pais').innerText;
-            document.getElementById('yes-codigo').innerText = document.getElementById('no-codigo').innerText;
-            document.getElementById('popup-yes').classList.remove('hidden');
-            hapticTouch([40, 40]);
-          })
-          .agregarLaminaGS(codigoActual);
-        return;
-      }
-
-      fetch(`${backendUrl}?action=agregar&codigo=${encodeURIComponent(codigoActual)}`)
+      fetch(`${BACKEND_URL}?action=agregar&codigo=${encodeURIComponent(codigoActual)}`)
         .then(response => {
           if (!response.ok) throw new Error("Error en servidor");
           return response.json();

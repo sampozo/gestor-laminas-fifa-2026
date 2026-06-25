@@ -1,0 +1,292 @@
+﻿ï»¿2026-06-24T19:26:16.9849657Z Current runner version: '2.335.1'
+2026-06-24T19:26:16.9874318Z ##[group]Runner Image Provisioner
+2026-06-24T19:26:16.9875485Z Hosted Compute Agent
+2026-06-24T19:26:16.9876124Z Version: 20260611.554
+2026-06-24T19:26:16.9876779Z Commit: 5e0782fdc9014723d3be820dd114dd31555c2bd1
+2026-06-24T19:26:16.9877647Z Build Date: 2026-06-11T21:40:46Z
+2026-06-24T19:26:16.9878432Z Worker ID: {bd55b936-1d4d-4a24-8194-a4c991fd50e8}
+2026-06-24T19:26:16.9879225Z Azure Region: westus
+2026-06-24T19:26:16.9879836Z ##[endgroup]
+2026-06-24T19:26:16.9881509Z ##[group]Operating System
+2026-06-24T19:26:16.9882313Z Ubuntu
+2026-06-24T19:26:16.9882915Z 24.04.4
+2026-06-24T19:26:16.9883492Z LTS
+2026-06-24T19:26:16.9884042Z ##[endgroup]
+2026-06-24T19:26:16.9884617Z ##[group]Runner Image
+2026-06-24T19:26:16.9885300Z Image: ubuntu-24.04
+2026-06-24T19:26:16.9885924Z Version: 20260622.220.1
+2026-06-24T19:26:16.9887273Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260622.220/images/ubuntu/Ubuntu2404-Readme.md
+2026-06-24T19:26:16.9888799Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260622.220
+2026-06-24T19:26:16.9889838Z ##[endgroup]
+2026-06-24T19:26:16.9891163Z ##[group]GITHUB_TOKEN Permissions
+2026-06-24T19:26:16.9893609Z Contents: write
+2026-06-24T19:26:16.9894255Z Metadata: read
+2026-06-24T19:26:16.9894827Z ##[endgroup]
+2026-06-24T19:26:16.9897012Z Secret source: Actions
+2026-06-24T19:26:16.9898064Z Prepare workflow directory
+2026-06-24T19:26:17.0235323Z Prepare all required actions
+2026-06-24T19:26:17.0279376Z Getting action download info
+2026-06-24T19:26:17.4123560Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-06-24T19:26:17.5052461Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-06-24T19:26:17.5877662Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-06-24T19:26:17.8028175Z Complete job name: build
+2026-06-24T19:26:17.8770258Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-24T19:26:17.8779202Z ##[group]Run actions/checkout@v4
+2026-06-24T19:26:17.8780005Z with:
+2026-06-24T19:26:17.8780439Z   fetch-depth: 0
+2026-06-24T19:26:17.8780958Z   repository: sampozo/gestor-laminas-fifa-2026
+2026-06-24T19:26:17.8785367Z   token: ***
+2026-06-24T19:26:17.8785850Z   ssh-strict: true
+2026-06-24T19:26:17.8786306Z   ssh-user: git
+2026-06-24T19:26:17.8786760Z   persist-credentials: true
+2026-06-24T19:26:17.8787377Z   clean: true
+2026-06-24T19:26:17.8787828Z   sparse-checkout-cone-mode: true
+2026-06-24T19:26:17.8788352Z   fetch-tags: false
+2026-06-24T19:26:17.8788797Z   show-progress: true
+2026-06-24T19:26:17.8789246Z   lfs: false
+2026-06-24T19:26:17.8789696Z   submodules: false
+2026-06-24T19:26:17.8790159Z   set-safe-directory: true
+2026-06-24T19:26:17.8790955Z ##[endgroup]
+2026-06-24T19:26:17.9760007Z Syncing repository: sampozo/gestor-laminas-fifa-2026
+2026-06-24T19:26:17.9762234Z ##[group]Getting Git version info
+2026-06-24T19:26:17.9763209Z Working directory is '/home/runner/work/gestor-laminas-fifa-2026/gestor-laminas-fifa-2026'
+2026-06-24T19:26:17.9764609Z [command]/usr/bin/git version
+2026-06-24T19:26:17.9881491Z git version 2.54.0
+2026-06-24T19:26:17.9901969Z ##[endgroup]
+2026-06-24T19:26:17.9915994Z Temporarily overriding HOME='/home/runner/work/_temp/91d1c83e-c6a3-47be-9327-a272624f72b2' before making global git config changes
+2026-06-24T19:26:17.9917956Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-24T19:26:17.9921278Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/gestor-laminas-fifa-2026/gestor-laminas-fifa-2026
+2026-06-24T19:26:17.9974781Z Deleting the contents of '/home/runner/work/gestor-laminas-fifa-2026/gestor-laminas-fifa-2026'
+2026-06-24T19:26:17.9977342Z ##[group]Initializing the repository
+2026-06-24T19:26:17.9981998Z [command]/usr/bin/git init /home/runner/work/gestor-laminas-fifa-2026/gestor-laminas-fifa-2026
+2026-06-24T19:26:18.0120511Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-06-24T19:26:18.0122611Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-06-24T19:26:18.0124529Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-06-24T19:26:18.0126009Z hint: call:
+2026-06-24T19:26:18.0127340Z hint:
+2026-06-24T19:26:18.0128570Z hint: 	git config --global init.defaultBranch <name>
+2026-06-24T19:26:18.0129560Z hint:
+2026-06-24T19:26:18.0130407Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-06-24T19:26:18.0132236Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-06-24T19:26:18.0133669Z hint:
+2026-06-24T19:26:18.0134462Z hint: 	git branch -m <name>
+2026-06-24T19:26:18.0135550Z hint:
+2026-06-24T19:26:18.0136638Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-06-24T19:26:18.0137947Z Initialized empty Git repository in /home/runner/work/gestor-laminas-fifa-2026/gestor-laminas-fifa-2026/.git/
+2026-06-24T19:26:18.0140968Z [command]/usr/bin/git remote add origin https://github.com/sampozo/gestor-laminas-fifa-2026
+2026-06-24T19:26:18.0185192Z ##[endgroup]
+2026-06-24T19:26:18.0185968Z ##[group]Disabling automatic garbage collection
+2026-06-24T19:26:18.0188698Z [command]/usr/bin/git config --local gc.auto 0
+2026-06-24T19:26:18.0217404Z ##[endgroup]
+2026-06-24T19:26:18.0218749Z ##[group]Setting up auth
+2026-06-24T19:26:18.0224827Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-24T19:26:18.0258135Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-24T19:26:18.0663922Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-24T19:26:18.0704452Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-24T19:26:18.0936267Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-24T19:26:18.0979851Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-24T19:26:18.1199904Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-06-24T19:26:18.1234615Z ##[endgroup]
+2026-06-24T19:26:18.1235513Z ##[group]Fetching the repository
+2026-06-24T19:26:18.1244344Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-06-24T19:26:18.7880786Z From https://github.com/sampozo/gestor-laminas-fifa-2026
+2026-06-24T19:26:18.7883155Z  * [new branch]      main       -> origin/main
+2026-06-24T19:26:18.7932947Z [command]/usr/bin/git branch --list --remote origin/main
+2026-06-24T19:26:18.7963980Z   origin/main
+2026-06-24T19:26:18.7976163Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-06-24T19:26:18.7998110Z f52a4fc559a1d45044f9c914ca3cd7fe490a7dce
+2026-06-24T19:26:18.8003989Z ##[endgroup]
+2026-06-24T19:26:18.8005391Z ##[group]Determining the checkout info
+2026-06-24T19:26:18.8007257Z ##[endgroup]
+2026-06-24T19:26:18.8009175Z [command]/usr/bin/git sparse-checkout disable
+2026-06-24T19:26:18.8057712Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-06-24T19:26:18.8087409Z ##[group]Checking out the ref
+2026-06-24T19:26:18.8091311Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-06-24T19:26:18.8239328Z Switched to a new branch 'main'
+2026-06-24T19:26:18.8240636Z branch 'main' set up to track 'origin/main'.
+2026-06-24T19:26:18.8248264Z ##[endgroup]
+2026-06-24T19:26:18.8292043Z [command]/usr/bin/git log -1 --format=%H
+2026-06-24T19:26:18.8315779Z f52a4fc559a1d45044f9c914ca3cd7fe490a7dce
+2026-06-24T19:26:18.8628529Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-24T19:26:18.8633853Z ##[group]Run actions/setup-node@v4
+2026-06-24T19:26:18.8634576Z with:
+2026-06-24T19:26:18.8635040Z   node-version: 22
+2026-06-24T19:26:18.8635564Z   cache: npm
+2026-06-24T19:26:18.8636216Z   cache-dependency-path: app/package-lock.json
+2026-06-24T19:26:18.8637126Z   always-auth: false
+2026-06-24T19:26:18.8637694Z   check-latest: false
+2026-06-24T19:26:18.8648026Z   token: ***
+2026-06-24T19:26:18.8648543Z ##[endgroup]
+2026-06-24T19:26:19.0072020Z Found in cache @ /opt/hostedtoolcache/node/22.23.0/x64
+2026-06-24T19:26:19.0077974Z (node:2301) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-06-24T19:26:19.0082146Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-24T19:26:19.0160440Z ##[group]Environment details
+2026-06-24T19:26:19.4372342Z node: v22.23.0
+2026-06-24T19:26:19.4373288Z npm: 10.9.8
+2026-06-24T19:26:19.4374003Z yarn: 1.22.22
+2026-06-24T19:26:19.4375404Z ##[endgroup]
+2026-06-24T19:26:19.4392319Z [command]/opt/hostedtoolcache/node/22.23.0/x64/bin/npm config get cache
+2026-06-24T19:26:19.6361798Z /home/runner/.npm
+2026-06-24T19:26:19.9450018Z npm cache is not found
+2026-06-24T19:26:19.9597874Z ##[group]Run cd app
+2026-06-24T19:26:19.9598247Z [36;1mcd app[0m
+2026-06-24T19:26:19.9598523Z [36;1mnpm install[0m
+2026-06-24T19:26:19.9598829Z [36;1mnpm run build[0m
+2026-06-24T19:26:19.9599116Z [36;1mnpx cap sync android[0m
+2026-06-24T19:26:19.9809139Z shell: /usr/bin/bash -e {0}
+2026-06-24T19:26:19.9809502Z ##[endgroup]
+2026-06-24T19:26:22.7579108Z npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+2026-06-24T19:26:22.7580973Z npm warn deprecated
+2026-06-24T19:26:22.7582268Z npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+2026-06-24T19:26:22.7886070Z npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
+2026-06-24T19:26:23.1249265Z npm warn deprecated git-raw-commits@2.0.11: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+2026-06-24T19:26:23.1389382Z npm warn deprecated git-semver-tags@4.1.1: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+2026-06-24T19:26:24.3301821Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-06-24T19:26:24.3987715Z npm warn deprecated uuid@7.0.3: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+2026-06-24T19:26:24.9114571Z npm warn deprecated glob@9.3.5: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-06-24T19:26:27.1138420Z 
+2026-06-24T19:26:27.1139281Z added 426 packages, and audited 427 packages in 7s
+2026-06-24T19:26:27.1139862Z 
+2026-06-24T19:26:27.1140457Z 60 packages are looking for funding
+2026-06-24T19:26:27.1143758Z   run `npm fund` for details
+2026-06-24T19:26:27.1524095Z 
+2026-06-24T19:26:27.1525169Z 8 vulnerabilities (2 moderate, 6 high)
+2026-06-24T19:26:27.1525904Z 
+2026-06-24T19:26:27.1526560Z To address issues that do not require attention, run:
+2026-06-24T19:26:27.1527504Z   npm audit fix
+2026-06-24T19:26:27.1527945Z 
+2026-06-24T19:26:27.1528470Z Some issues need review, and may require choosing
+2026-06-24T19:26:27.1529407Z a different dependency.
+2026-06-24T19:26:27.1529945Z 
+2026-06-24T19:26:27.1530450Z Run `npm audit` for details.
+2026-06-24T19:26:27.3058254Z 
+2026-06-24T19:26:27.3058880Z > app@0.0.0 build
+2026-06-24T19:26:27.3059395Z > vite build
+2026-06-24T19:26:27.3059634Z 
+2026-06-24T19:26:27.5087642Z [36mvite v8.1.0 [32mbuilding client environment for production...[36m[39m
+2026-06-24T19:26:27.5256435Z [2K
+2026-06-24T19:26:27.5768767Z transforming...â 3 modules transformed.
+2026-06-24T19:26:27.5803307Z rendering chunks...
+2026-06-24T19:26:27.5847127Z computing gzip size...
+2026-06-24T19:26:27.5854115Z dist/index.html  26.96 kB â gzip: 6.64 kB
+2026-06-24T19:26:27.5854546Z 
+2026-06-24T19:26:27.5858150Z [32mâ built in 76ms[39m
+2026-06-24T19:26:28.3536629Z â Copying web assets from dist to android/app/src/main/assets/public in 3.57ms
+2026-06-24T19:26:28.3544167Z â Creating capacitor.config.json in android/app/src/main/assets in 522.77Î¼s
+2026-06-24T19:26:28.3590049Z â copy android in 12.72ms
+2026-06-24T19:26:28.3621226Z â Updating Android plugins in 744.48Î¼s
+2026-06-24T19:26:28.3765951Z â update android in 16.47ms
+2026-06-24T19:26:28.3805399Z [info] Sync finished in 0.037s
+2026-06-24T19:26:28.4133289Z ##[group]Run cd app/android
+2026-06-24T19:26:28.4133621Z [36;1mcd app/android[0m
+2026-06-24T19:26:28.4133897Z [36;1mchmod +x gradlew[0m
+2026-06-24T19:26:28.4134178Z [36;1m./gradlew assembleDebug --no-daemon[0m
+2026-06-24T19:26:28.4166989Z shell: /usr/bin/bash -e {0}
+2026-06-24T19:26:28.4167255Z env:
+2026-06-24T19:26:28.4167474Z   JAVA_OPTS: -Xmx2048m
+2026-06-24T19:26:28.4167712Z ##[endgroup]
+2026-06-24T19:26:28.7579954Z Downloading https://services.gradle.org/distributions/gradle-8.14.3-all.zip
+2026-06-24T19:26:32.5779422Z .....................10%.....................20%......................30%.....................40%......................50%.....................60%.....................70%......................80%.....................90%......................100%
+2026-06-24T19:26:36.0608846Z 
+2026-06-24T19:26:36.0610390Z Welcome to Gradle 8.14.3!
+2026-06-24T19:26:36.0611375Z 
+2026-06-24T19:26:36.0612692Z Here are the highlights of this release:
+2026-06-24T19:26:36.0613798Z  - Java 24 support
+2026-06-24T19:26:36.0615153Z  - GraalVM Native Image toolchain selection
+2026-06-24T19:26:36.0616428Z  - Enhancements to test reporting
+2026-06-24T19:26:36.0617758Z  - Build Authoring improvements
+2026-06-24T19:26:36.0618144Z 
+2026-06-24T19:26:36.0620322Z For more details see https://docs.gradle.org/8.14.3/release-notes.html
+2026-06-24T19:26:36.0621280Z 
+2026-06-24T19:26:36.1634301Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2026-06-24T19:26:37.7597484Z Daemon will be stopped at the end of the build 
+2026-06-24T19:27:04.3612190Z 
+2026-06-24T19:27:04.3632030Z > Configure project :app
+2026-06-24T19:27:04.3633440Z WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+2026-06-24T19:27:06.7607569Z 
+2026-06-24T19:27:06.7621956Z > Configure project :capacitor-cordova-android-plugins
+2026-06-24T19:27:06.7623559Z WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+2026-06-24T19:27:08.4611830Z 
+2026-06-24T19:27:08.4622736Z > Task :app:preBuild UP-TO-DATE
+2026-06-24T19:27:08.4632086Z > Task :app:preDebugBuild UP-TO-DATE
+2026-06-24T19:27:08.5622634Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+2026-06-24T19:27:08.6612789Z > Task :capacitor-android:preBuild UP-TO-DATE
+2026-06-24T19:27:08.6613704Z > Task :capacitor-android:preDebugBuild UP-TO-DATE
+2026-06-24T19:27:08.6614620Z > Task :capacitor-cordova-android-plugins:preBuild UP-TO-DATE
+2026-06-24T19:27:08.6615670Z > Task :capacitor-cordova-android-plugins:preDebugBuild UP-TO-DATE
+2026-06-24T19:27:08.6616577Z > Task :capacitor-android:writeDebugAarMetadata
+2026-06-24T19:27:08.6617705Z > Task :capacitor-cordova-android-plugins:writeDebugAarMetadata
+2026-06-24T19:27:08.6618523Z > Task :app:javaPreCompileDebug
+2026-06-24T19:27:08.6619320Z > Task :capacitor-android:processDebugNavigationResources
+2026-06-24T19:27:14.4597758Z > Task :capacitor-cordova-android-plugins:processDebugNavigationResources
+2026-06-24T19:27:14.4598592Z > Task :app:checkDebugAarMetadata
+2026-06-24T19:27:14.4599078Z > Task :app:processDebugNavigationResources
+2026-06-24T19:27:14.9604715Z > Task :app:generateDebugResValues
+2026-06-24T19:27:14.9622239Z > Task :capacitor-android:generateDebugResValues
+2026-06-24T19:27:15.0602679Z > Task :app:compileDebugNavigationResources
+2026-06-24T19:27:15.0612818Z > Task :capacitor-android:generateDebugResources
+2026-06-24T19:27:15.1632603Z > Task :capacitor-android:packageDebugResources
+2026-06-24T19:27:15.1662262Z > Task :capacitor-cordova-android-plugins:generateDebugResValues
+2026-06-24T19:27:15.1682610Z > Task :capacitor-cordova-android-plugins:generateDebugResources
+2026-06-24T19:27:15.1692156Z > Task :capacitor-cordova-android-plugins:packageDebugResources
+2026-06-24T19:27:15.1722228Z > Task :app:mapDebugSourceSetPaths
+2026-06-24T19:27:15.1730196Z > Task :app:generateDebugResources
+2026-06-24T19:27:15.8602882Z > Task :app:packageDebugResources
+2026-06-24T19:27:16.5595726Z > Task :app:mergeDebugResources
+2026-06-24T19:27:17.9596434Z > Task :app:createDebugCompatibleScreenManifests
+2026-06-24T19:27:17.9621993Z > Task :app:extractDeepLinksDebug
+2026-06-24T19:27:17.9625532Z > Task :capacitor-android:extractDeepLinksDebug
+2026-06-24T19:27:17.9652126Z > Task :capacitor-cordova-android-plugins:extractDeepLinksDebug
+2026-06-24T19:27:18.0601253Z > Task :capacitor-android:compileDebugLibraryResources
+2026-06-24T19:27:18.0602379Z > Task :capacitor-android:processDebugManifest
+2026-06-24T19:27:18.0603265Z > Task :capacitor-cordova-android-plugins:processDebugManifest
+2026-06-24T19:27:18.0604022Z > Task :app:parseDebugLocalResources
+2026-06-24T19:27:18.0604943Z > Task :capacitor-cordova-android-plugins:compileDebugLibraryResources
+2026-06-24T19:27:18.0605905Z > Task :capacitor-android:parseDebugLocalResources
+2026-06-24T19:27:18.2596749Z > Task :app:processDebugMainManifest
+2026-06-24T19:27:18.4598644Z > Task :app:processDebugManifest
+2026-06-24T19:27:18.5600017Z > Task :app:processDebugManifestForPackage
+2026-06-24T19:27:18.5601719Z > Task :capacitor-android:javaPreCompileDebug
+2026-06-24T19:27:18.5602924Z > Task :capacitor-cordova-android-plugins:javaPreCompileDebug
+2026-06-24T19:27:18.5604178Z > Task :capacitor-cordova-android-plugins:parseDebugLocalResources
+2026-06-24T19:27:18.5605203Z > Task :app:mergeDebugShaders
+2026-06-24T19:27:18.5605990Z > Task :capacitor-android:generateDebugRFile
+2026-06-24T19:27:18.5606992Z > Task :capacitor-cordova-android-plugins:generateDebugRFile
+2026-06-24T19:27:23.6614761Z 
+2026-06-24T19:27:23.6615573Z > Task :capacitor-android:compileDebugJavaWithJavac FAILED
+2026-06-24T19:27:23.6642274Z FAILURE: Build failed with an exception.
+2026-06-24T19:27:23.6642694Z 
+2026-06-24T19:27:23.6671555Z 
+2026-06-24T19:27:23.6673210Z [Incubating] Problems report is available at: file:///home/runner/work/gestor-laminas-fifa-2026/gestor-laminas-fifa-2026/app/android/build/reports/problems/problems-report.html
+2026-06-24T19:27:23.6692086Z 39 actionable tasks: 39 executed
+2026-06-24T19:27:23.6701774Z * What went wrong:
+2026-06-24T19:27:23.6732177Z Execution failed for task ':capacitor-android:compileDebugJavaWithJavac'.
+2026-06-24T19:27:23.6733069Z > Java compilation initialization error
+2026-06-24T19:27:23.6733668Z     error: invalid source release: 21
+2026-06-24T19:27:23.6733996Z 
+2026-06-24T19:27:23.6734140Z * Try:
+2026-06-24T19:27:23.6734682Z > Run with --stacktrace option to get the stack trace.
+2026-06-24T19:27:23.6735469Z > Run with --info or --debug option to get more log output.
+2026-06-24T19:27:23.6736155Z > Run with --scan to get full insights.
+2026-06-24T19:27:23.6738537Z > Get more help at https://help.gradle.org.
+2026-06-24T19:27:23.6752472Z 
+2026-06-24T19:27:23.6754981Z BUILD FAILED in 55s
+2026-06-24T19:27:23.9672603Z ##[error]Process completed with exit code 1.
+2026-06-24T19:27:23.9826477Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-24T19:27:23.9827759Z Post job cleanup.
+2026-06-24T19:27:24.0655823Z [command]/usr/bin/git version
+2026-06-24T19:27:24.0692429Z git version 2.54.0
+2026-06-24T19:27:24.0730341Z Temporarily overriding HOME='/home/runner/work/_temp/f1a228ef-99f4-4b6d-9467-a4714cf7d7c6' before making global git config changes
+2026-06-24T19:27:24.0732225Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-24T19:27:24.0735537Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/gestor-laminas-fifa-2026/gestor-laminas-fifa-2026
+2026-06-24T19:27:24.0772471Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-24T19:27:24.0806019Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-24T19:27:24.1027392Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-24T19:27:24.1054421Z http.https://github.com/.extraheader
+2026-06-24T19:27:24.1065515Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-06-24T19:27:24.1095615Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-24T19:27:24.1312895Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-24T19:27:24.1343530Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-24T19:27:24.1699978Z Cleaning up orphan processes
+2026-06-24T19:27:24.2019947Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

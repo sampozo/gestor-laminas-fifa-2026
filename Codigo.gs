@@ -1,5 +1,23 @@
 // Backend para el Gestor de Láminas FIFA 2026
-// Sigue la guía de HTML-to-Mobile-Architect (v6.0)
+// =====================================================================
+// CONFIGURACIÓN INICIAL (ejecutar UNA VEZ desde el editor de Apps Script)
+// =====================================================================
+// 1. Abre este archivo en script.google.com
+// 2. Ejecuta la función setupSpreadsheetId() una sola vez
+// 3. Luego despliega como Web App (Ejecutar como: Yo, Acceso: Cualquiera)
+// 4. Copia la URL del Web App y pégala en app/index.html → constante BACKEND_URL
+// =====================================================================
+
+/**
+ * Ejecutar UNA SOLA VEZ para guardar el ID de la hoja en Script Properties.
+ * Después de ejecutarla, despliega el script como Web App.
+ */
+function setupSpreadsheetId() {
+  const SPREADSHEET_ID = '15Ju-RZ9IP4rv0-chrg84xTp0EGeGDy-unDCWRfGYZFA';
+  PropertiesService.getScriptProperties().setProperty('SPREADSHEET_ID', SPREADSHEET_ID);
+  Logger.log('✅ SPREADSHEET_ID configurado correctamente: ' + SPREADSHEET_ID);
+  Logger.log('Ahora despliega el script como Web App.');
+}
 
 /**
  * Maneja las peticiones GET desde la aplicación móvil.
@@ -29,27 +47,14 @@ function doPost(e) {
 }
 
 /**
- * Obtiene la hoja de cálculo de forma segura.
- * Prioriza la hoja activa (bound script) y si falla, usa el ID seguro almacenado en Script Properties.
+ * Obtiene la hoja de cálculo usando el ID almacenado en Script Properties.
  */
 function getSheet() {
-  try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    if (ss) {
-      const activeSheet = ss.getSheets()[0];
-      if (activeSheet) return activeSheet;
-    }
-  } catch (err) {
-    // Silenciar error y proceder al fallback por ID
+  const sheetId = PropertiesService.getScriptProperties().getProperty('SPREADSHEET_ID');
+  if (!sheetId) {
+    throw new Error('SPREADSHEET_ID no configurado. Ejecuta setupSpreadsheetId() primero.');
   }
-  
-  // Usar fallback de ID almacenado de forma segura en las propiedades del script
-  const sheetId = PropertiesService.getScriptProperties().getProperty("SPREADSHEET_ID");
-  if (sheetId) {
-    return SpreadsheetApp.openById(sheetId).getSheets()[0];
-  }
-  
-  throw new Error("No se pudo conectar con la hoja de cálculo. Por favor vincula el script o configura la propiedad SPREADSHEET_ID.");
+  return SpreadsheetApp.openById(sheetId).getSheets()[0];
 }
 
 /**
